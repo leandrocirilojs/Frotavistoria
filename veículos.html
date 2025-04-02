@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Veículos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Cadastrar Veículo</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="veiculos.html">Veículos</a>
+      <a href="manutencao.html">Manutenção</a>
+      <a href="abastecimento.html">Combustível</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="form-veiculo">
+      <label for="placa">Placa:</label>
+      <input type="text" id="placa" required>
+
+      <label for="modelo">Modelo:</label>
+      <input type="text" id="modelo" required>
+
+      <label for="kmAtual">KM Atual:</label>
+      <input type="number" id="kmAtual" required>
+
+      <label for="kmTrocaOleo">Próxima troca de óleo (KM):</label>
+      <input type="number" id="kmTrocaOleo" value="10000" required>
+
+      <button type="button" onclick="cadastrarVeiculo()">Salvar</button>
+    </form>
+
+    <section id="lista-veiculos">
+      <h2>Veículos Cadastrados</h2>
+      <ul id="veiculos"></ul>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/veiculos.js"></script>
+</body>
+</html>
