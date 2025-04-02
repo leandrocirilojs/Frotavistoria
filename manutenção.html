@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendar Manutenção</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Manutenções</h1>
+    <nav>(... mesmo menu ...)</nav>
+  </header>
+
+  <main>
+    <form id="form-manutencao">
+      <label for="placa-manutencao">Placa do Veículo:</label>
+      <select id="placa-manutencao"></select>
+
+      <label for="tipo">Tipo de Manutenção:</label>
+      <select id="tipo">
+        <option value="oleo">Troca de Óleo</option>
+        <option value="freio">Pastilhas de Freio</option>
+        <option value="filtro">Filtro de Ar</option>
+      </select>
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" required>
+
+      <button type="button" onclick="agendarManutencao()">Agendar</button>
+    </form>
+
+    <section id="historico">
+      <h2>Histórico</h2>
+      <ul id="lista-manutencoes"></ul>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/manutencao.js"></script>
+</body>
+</html>
