@@ -1,3 +1,8 @@
+function validarPlaca(placa) {
+     const regex = /^[A-Z]{3}\d{1}[A-Z]{1}\d{2}$|^[A-Z]{3}\d{2}$/i;
+     return regex.test(placa);
+}
+
 // Função para cadastrar veículo (com todas as validações)
 function cadastrarVeiculo() {
   const placa = document.getElementById('placa').value.trim().toUpperCase();
