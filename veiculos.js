@@ -1,9 +1,14 @@
-// Cadastra veículo
+// Função melhorada para cadastrar veículo
 function cadastrarVeiculo() {
   const placa = document.getElementById('placa').value;
   const modelo = document.getElementById('modelo').value;
   const kmAtual = parseFloat(document.getElementById('kmAtual').value);
   const kmTrocaOleo = parseFloat(document.getElementById('kmTrocaOleo').value);
+
+  if (!validarPlaca(placa)) {
+    Swal.fire('Erro', 'Placa inválida! Formato: ABC1D23', 'error');
+    return;
+  }
 
   const db = loadData();
   db.veiculos.push({
@@ -13,34 +18,9 @@ function cadastrarVeiculo() {
     kmProximaTrocaOleo: kmAtual + kmTrocaOleo,
     ultimaTrocaOleo: null
   });
+
   saveData(db);
-  alert('Veículo cadastrado!');
+  Swal.fire('Sucesso!', 'Veículo cadastrado.', 'success');
   listarVeiculos();
+  updateDashboard(); // Atualiza o resumo no dashboard
 }
-
-// Lista veículos na página
-function listarVeiculos() {
-  const db = loadData();
-  const lista = document.getElementById('veiculos');
-  lista.innerHTML = db.veiculos.map(veiculo => `
-    <li>
-      <strong>${veiculo.placa}</strong> - ${veiculo.modelo} (KM: ${veiculo.kmAtual}) 
-      <button onclick="editarVeiculo('${veiculo.placa}')">Editar KM</button>
-    </li>
-  `).join('');
-}
-
-// Editar KM (simplificado)
-function editarVeiculo(placa) {
-  const novoKm = prompt("Nova quilometragem:");
-  if (novoKm) {
-    const db = loadData();
-    const veiculo = db.veiculos.find(v => v.placa === placa);
-    veiculo.kmAtual = parseFloat(novoKm);
-    saveData(db);
-    listarVeiculos();
-  }
-}
-
-// Carrega a lista ao abrir a página
-document.addEventListener('DOMContentLoaded', listarVeiculos);
