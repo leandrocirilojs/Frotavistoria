@@ -38,19 +38,30 @@ function registrarAbastecimento() {
 }
 
 // Lista histórico de abastecimentos
+// Lista histórico de abastecimentos com botão de excluir
 function listarAbastecimentos() {
   const db = loadData();
   const lista = document.getElementById('lista-abastecimentos');
   
-  lista.innerHTML = db.abastecimentos.map(a => `
+  lista.innerHTML = db.abastecimentos.map((a, index) => `
     <li>
       <strong>${a.placa}</strong> - ${a.data}<br>
       ${a.litros}L de ${a.tipo} (R$ ${a.valor.toFixed(2)})<br>
       KM: ${a.kmAtual} | Preço/L: R$ ${a.precoPorLitro}
+      <button onclick="excluirAbastecimento(${index})" class="btn-excluir">Excluir</button>
     </li>
   `).join('');
 }
 
+// Função para excluir abastecimento
+function excluirAbastecimento(index) {
+  if (confirm('Tem certeza que deseja excluir este abastecimento?')) {
+    const db = loadData();
+    db.abastecimentos.splice(index, 1); // Remove o item no índice especificado
+    saveData(db);
+    listarAbastecimentos(); // Atualiza a lista
+  }
+}
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   carregarVeiculosAbastecimento();
