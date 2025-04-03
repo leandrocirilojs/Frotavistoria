@@ -26,6 +26,8 @@ function agendarManutencao() {
   saveData(db);
   alert('Manutenção agendada!');
   listarManutencoes();
+  
+atualizarDashboardManutencoes();
 }
 
 // Lista histórico
@@ -47,6 +49,7 @@ function marcarRealizada(placa, data) {
   manutencao.realizada = true;
   saveData(db);
   listarManutencoes();
+  atualizarDashboardManutencoes();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
