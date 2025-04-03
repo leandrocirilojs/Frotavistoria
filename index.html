@@ -2,42 +2,141 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Gestor de Frota</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Frota Manager</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Chart.js para gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <style>
+    /* Adicione ao seu CSS existente */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+.card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0.5rem 0 0;
+  color: #2c3e50;
+}
+
+.chart-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  height: 300px;
+}
+
+.alert-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.quick-actions button {
+  flex: 1;
+  padding: 0.8rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .chart-section {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
   <header>
-    <h1>Minha Frota</h1>
-    <nav>
-      <a href="index.html">Dashboard</a>
-      <a href="veiculos.html">Veículos</a>
-      <a href="manutencao.html">Manutenção</a>
-      <a href="abastecimento.html">Combustível</a>
-    </nav>
+    <h1>Dashboard da Frota</h1>
+    <nav><!-- (Menu igual às outras páginas) --></nav>
   </header>
 
   <main>
-    <section id="dashboard">
-      <h2>Resumo da Frota</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Veículos Cadastrados</h3>
-          <p id="total-veiculos">0</p>
-        </div>
-        <div class="card">
-          <h3>Próximas Manutenções</h3>
-          <p id="prox-manutencao">0</p>
-        </div>
+    <!-- Seção 1: Cards Resumo -->
+    <section class="card-grid">
+      <div class="card">
+        <h3>Veículos Ativos</h3>
+        <p id="total-veiculos">0</p>
+      </div>
+      <div class="card">
+        <h3>Manutenções Pendentes</h3>
+        <p id="prox-manutencao">0</p>
+      </div>
+      <div class="card">
+        <h3>Consumo Médio (KM/L)</h3>
+        <p id="consumo-medio-frota">0.00</p>
+      </div>
+      <div class="card">
+        <h3>Custo Mensal (R$)</h3>
+        <p id="custo-mensal">0.00</p>
       </div>
     </section>
 
-    <section id="alertas">
-      <h2>Alertas</h2>
+    <!-- Seção 2: Gráficos -->
+    <section class="chart-section">
+      <div class="chart-container">
+        <canvas id="chart-manutencoes"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="chart-consumo"></canvas>
+      </div>
+    </section>
+
+    <!-- Seção 3: Alertas e Ações Rápidas -->
+    <section class="alert-section">
+      <h2>Alertas Prioritários</h2>
       <ul id="lista-alertas"></ul>
+      
+      <div class="quick-actions">
+        <button onclick="location.href='veiculos.html'">Cadastrar Veículo</button>
+        <button onclick="location.href='manutencao.html'">Agendar Manutenção</button>
+      </div>
     </section>
   </main>
 
   <script src="app.js"></script>
-  <script src="veiculos.js"></script>
+  <script src="dashboard.js"></script> <!-- Novo arquivo -->
 </body>
-    </html>
+</html>
