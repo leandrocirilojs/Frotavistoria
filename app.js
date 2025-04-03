@@ -72,5 +72,5 @@ function criarDadosExemplo() {
   
   localStorage.setItem(DB_NAME, JSON.stringify(db));
 }
-// Descomente para usar:
-// criarDadosExemplo();
+//Descomente para usar:
+criarDadosExemplo();
