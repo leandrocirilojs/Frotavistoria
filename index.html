@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Gestor de Frota</title>
-  <link rel="stylesheet" href="style1.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Frota Manager</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -124,12 +125,10 @@ main {
   }
 }
 </style>
-
-  
   <header>
-    <h1>Minha Frota</h1>
+    <h1>Visão Geral da Frota</h1>
     <nav>
-      <a href="index.html">Dashboard</a>
+      <a href="index.html" class="active">Dashboard</a>
       <a href="veiculos.html">Veículos</a>
       <a href="manutencao.html">Manutenção</a>
       <a href="abastecimento.html">Combustível</a>
@@ -137,27 +136,45 @@ main {
   </header>
 
   <main>
-    <section id="dashboard">
-      <h2>Resumo da Frota</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Veículos Cadastrados</h3>
-          <p id="total-veiculos">0</p>
-        </div>
-        <div class="card">
-          <h3>Próximas Manutenções</h3>
-          <p id="prox-manutencao">0</p>
-        </div>
+    <!-- Seção 1: Cards Principais -->
+    <div class="card-container">
+      <div class="card">
+        <img src="icons/car-icon.svg" alt="Veículos">
+        <h3>Veículos</h3>
+        <p id="total-veiculos">0</p>
       </div>
+
+      <div class="card">
+        <img src="icons/warning-icon.svg" alt="Alertas">
+        <h3>Alertas</h3>
+        <p id="total-alertas">0</p>
+      </div>
+
+      <div class="card">
+        <img src="icons/fuel-icon.svg" alt="Consumo">
+        <h3>Consumo Médio</h3>
+        <p id="consumo-medio">0.0 KM/L</p>
+      </div>
+    </div>
+
+    <!-- Seção 2: Lista de Alertas -->
+    <section class="alertas">
+      <h2>⚠️ Alertas Prioritários</h2>
+      <ul id="lista-alertas">
+        <!-- Preenchido por JavaScript -->
+      </ul>
     </section>
 
-    <section id="alertas">
-      <h2>Alertas</h2>
-      <ul id="lista-alertas"></ul>
+    <!-- Seção 3: Últimos Registros -->
+    <section class="ultimos-registros">
+      <h2>📝 Últimas Ações</h2>
+      <div id="ultimas-acoes">
+        <!-- Preenchido por JavaScript -->
+      </div>
     </section>
   </main>
 
   <script src="app.js"></script>
-  <script src="veiculos.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
