@@ -26,6 +26,7 @@ function listarVeiculos() {
     <li>
       <strong>${veiculo.placa}</strong> - ${veiculo.modelo} (KM: ${veiculo.kmAtual}) 
       <button onclick="editarVeiculo('${veiculo.placa}')">Editar KM</button>
+      <button onclick="excluirVeiculo('${veiculo.placa}')" class="delete-btn">Excluir</button>
     </li>
   `).join('');
 }
@@ -41,6 +42,23 @@ function editarVeiculo(placa) {
     listarVeiculos();
   }
 }
+
+
+// Adicione esta função junto com as outras
+function excluirVeiculo(placa) {
+  if (confirm(`Tem certeza que deseja excluir o veículo ${placa}?`)) {
+    const db = loadData();
+    db.veiculos = db.veiculos.filter(v => v.placa !== placa);
+    saveData(db);
+    listarVeiculos();
+    alert('Veículo excluído com sucesso!');
+  }
+}
+
+
+
+
+
 
 // Carrega a lista ao abrir a página
 document.addEventListener('DOMContentLoaded', listarVeiculos);
