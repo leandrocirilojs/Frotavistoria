@@ -121,7 +121,7 @@ li {
 }
 
 /* Media Query para Telas Maiores (Tablets/Desktop) */
-@media (min-width: 768px) {
+@media (min-width: 500px) {
   body {
     font-size: 18px;
   }
@@ -166,11 +166,4 @@ li {
 
 #historico-abastecimento li strong {
   color: #2c3e50;
-}
-
-@media (max-width: 768px) {
-  #historico-abastecimento li {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
 }
