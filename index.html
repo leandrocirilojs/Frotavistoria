@@ -3,9 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <title>Gestor de Frota</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style1.css">
 </head>
 <body>
+
+<style>
+  /* Estilos Gerais */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #34495e;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+nav a.active, nav a:hover {
+  background: #2980b9;
+}
+
+main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #7f8c8d;
+}
+
+.card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  color: #2c3e50;
+}
+
+/* Alertas e Registros */
+.alertas, .ultimos-registros {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.alertas h2, .ultimos-registros h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+#lista-alertas {
+  padding-left: 0;
+}
+
+#lista-alertas li {
+  list-style: none;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  background: #fff8e1;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+  
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+</style>
+
+  
   <header>
     <h1>Minha Frota</h1>
     <nav>
