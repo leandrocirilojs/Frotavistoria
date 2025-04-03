@@ -53,24 +53,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-function criarDadosExemplo() {
-  const db = {
-    veiculos: [
-      { id: 1, placa: "ABC1D23", modelo: "Fiat Toro", kmAtual: 45000, kmProximaTrocaOleo: 50000 },
-      { id: 2, placa: "XYZ4E56", modelo: "VW Gol", kmAtual: 32000, kmProximaTrocaOleo: 35000 }
-    ],
-    manutencoes: [
-      { id: 1, veiculoId: 1, tipo: "oleo", data: "2023-12-01", realizada: false },
-      { id: 2, veiculoId: 2, tipo: "freio", data: "2023-11-15", realizada: true }
-    ],
-    abastecimentos: [
-      { id: 1, veiculoId: 1, litros: 40, valor: 280, kmAtual: 44000, data: "2023-11-10" },
-      { id: 2, veiculoId: 1, litros: 35, valor: 245, kmAtual: 45000, data: "2023-11-20" }
-    ],
-    nextId: 3
-  };
-  
-  localStorage.setItem(DB_NAME, JSON.stringify(db));
-}
-//Descomente para usar:
-criarDadosExemplo();
