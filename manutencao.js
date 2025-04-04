@@ -14,42 +14,80 @@ function agendarManutencao() {
   const data = document.getElementById('data').value;
 
   const db = loadData();
-  db.manutencoes.push({ placa, tipo, data, realizada: false });
+  db.manutencoes.push({ 
+    placa, 
+    tipo, 
+    data, 
+    realizada: false,
+    id: Date.now() // Adiciona um ID único para facilitar a exclusão
+  });
   
   // Atualiza KM da última troca de óleo se for o caso
   if (tipo === 'oleo') {
     const veiculo = db.veiculos.find(v => v.placa === placa);
-    veiculo.ultimaTrocaOleo = data;
-    veiculo.kmProximaTrocaOleo = veiculo.kmAtual + 10000; // Exemplo: próxima troca em 10.000 KM
+    if (veiculo) {
+      veiculo.ultimaTrocaOleo = data;
+      veiculo.kmProximaTrocaOleo = veiculo.kmAtual + 10000;
+    }
   }
 
   saveData(db);
   alert('Manutenção agendada!');
   listarManutencoes();
-  
-atualizarDashboardManutencoes();
+  atualizarDashboardManutencoes();
 }
 
-// Lista histórico
+// Lista histórico com botão de excluir
 function listarManutencoes() {
   const db = loadData();
   const lista = document.getElementById('lista-manutencoes');
-  lista.innerHTML = db.manutencoes.map(m => `
-    <li>
-      ${m.placa} - ${m.tipo} (${m.data}) 
-      <button onclick="marcarRealizada('${m.placa}', '${m.data}')">✅</button>
+  
+  // Ordena por data (mais recentes primeiro)
+  const manutencoesOrdenadas = [...db.manutencoes].sort((a, b) => 
+    new Date(b.data) - new Date(a.data)
+  );
+  
+  lista.innerHTML = manutencoesOrdenadas.map(m => `
+    <li class="${m.realizada ? 'realizada' : 'pendente'}">
+      ${m.placa} - ${m.tipo} (${formatarData(m.data)}) 
+      ${!m.realizada ? `<button onclick="marcarRealizada(${m.id})">✅ Realizar</button>` : ''}
+      <button onclick="excluirManutencao(${m.id})" class="btn-excluir">🗑️ Excluir</button>
     </li>
   `).join('');
 }
 
-// Marcar como realizada
-function marcarRealizada(placa, data) {
-  const db = loadData();
-  const manutencao = db.manutencoes.find(m => m.placa === placa && m.data === data);
-  manutencao.realizada = true;
-  saveData(db);
-  listarManutencoes();
-  atualizarDashboardManutencoes();
+// Formata data para exibição (DD/MM/AAAA)
+function formatarData(dataString) {
+  const data = new Date(dataString);
+  return data.toLocaleDateString('pt-BR');
+}
+
+// Marcar como realizada (agora usando ID)
+function marcarRealizada(id) {
+  if (confirm('Deseja marcar esta manutenção como realizada?')) {
+    const db = loadData();
+    const manutencao = db.manutencoes.find(m => m.id === id);
+    if (manutencao) {
+      manutencao.realizada = true;
+      saveData(db);
+      listarManutencoes();
+      atualizarDashboardManutencoes();
+    }
+  }
+}
+
+// Excluir manutenção
+function excluirManutencao(id) {
+  if (confirm('Tem certeza que deseja excluir esta manutenção?')) {
+    const db = loadData();
+    const index = db.manutencoes.findIndex(m => m.id === id);
+    if (index !== -1) {
+      db.manutencoes.splice(index, 1);
+      saveData(db);
+      listarManutencoes();
+      atualizarDashboardManutencoes();
+    }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
