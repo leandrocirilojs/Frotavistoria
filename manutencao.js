@@ -36,14 +36,13 @@ function listarManutencoes() {
   const db = loadData();
   const lista = document.getElementById('lista-manutencoes');
   
-  // Ordena por data (mais recentes primeiro)
   const manutencoesOrdenadas = [...db.manutencoes].sort((a, b) => 
     new Date(b.data) - new Date(a.data)
   );
   
   lista.innerHTML = manutencoesOrdenadas.map(m => `
     <li class="${m.realizada ? 'realizada' : 'pendente'}">
-      ${m.placa} - ${m.tipo} (${formatarData(m.data)}) 
+      ${m.placa} - ${m.tipo} (${formatarData(m.data)}) - R$ ${m.valor?.toFixed(2) || '0,00'}
       ${!m.realizada ? `<button onclick="marcarRealizada(${m.id})">✅ Realizar</button>` : ''}
       <button onclick="excluirManutencao(${m.id})" class="btn-excluir">🗑️ Excluir</button>
     </li>
