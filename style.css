@@ -235,7 +235,8 @@ ul li:last-child {
 /* Responsividade */
 @media (max-width: 768px) {
   html {
-    font-size: 14px;
+    /* certo 14 */
+    font-size: 12px;
   }
 
   header {
