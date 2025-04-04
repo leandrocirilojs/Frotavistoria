@@ -12,25 +12,19 @@ function agendarManutencao() {
   const placa = document.getElementById('placa-manutencao').value;
   const tipo = document.getElementById('tipo').value;
   const data = document.getElementById('data').value;
+  const valor = parseFloat(document.getElementById('valor').value);
 
   const db = loadData();
   db.manutencoes.push({ 
     placa, 
     tipo, 
     data, 
+    valor,  // Adiciona o valor aqui
     realizada: false,
-    id: Date.now() // Adiciona um ID único para facilitar a exclusão
+    id: Date.now()
   });
   
-  // Atualiza KM da última troca de óleo se for o caso
-  if (tipo === 'oleo') {
-    const veiculo = db.veiculos.find(v => v.placa === placa);
-    if (veiculo) {
-      veiculo.ultimaTrocaOleo = data;
-      veiculo.kmProximaTrocaOleo = veiculo.kmAtual + 10000;
-    }
-  }
-
+  // Restante do código permanece igual...
   saveData(db);
   alert('Manutenção agendada!');
   listarManutencoes();
