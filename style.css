@@ -324,3 +324,38 @@ ul li:last-child {
   margin-right: 0.5rem;
   vertical-align: middle;
 }
+
+
+
+
+/* Estilos específicos para a página de abastecimento */
+#form-abastecimento {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+#historico-abastecimento {
+  overflow-x: auto;
+}
+
+#lista-abastecimentos li {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  #lista-abastecimentos li {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  #lista-abastecimentos li::before {
+    content: attr(data-label);
+    font-weight: bold;
+    grid-column: 1;
+  }
+  
+  #lista-abastecimentos li span {
+    grid-column: 2;
+  }
+}
