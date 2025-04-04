@@ -23,31 +23,38 @@
 
       <label for="tipo">Tipo de Manutenção:</label>
       <select id="tipo">
-        <option value="oleo">Troca de Óleo</option>
-<option value="filtro-oleo">Troca do Filtro de Óleo</option>
-<option value="filtro-ar">Troca do Filtro de Ar do Motor</option>
-<option value="filtro-cabine">Troca do Filtro de Cabine (Ar-condicionado)</option>
-<option value="filtro-combustivel">Troca do Filtro de Combustível</option>
-<option value="velas">Substituição das Velas de Ignição</option>
-<option value="fluido-freio">Troca do Fluido de Freio</option>
-<option value="fluido-arrefecimento">Troca do Fluido de Arrefecimento</option>
-<option value="pastilhas-freio">Substituição das Pastilhas de Freio</option>
-<option value="discos-freio">Substituição dos Discos de Freio</option>
-<option value="correia-dentada">Troca da Correia Dentada</option>
-<option value="correia-acessorios">Troca da Correia de Acessórios</option>
-<option value="amortecedores">Verificação/Troca dos Amortecedores</option>
-<option value="rodizio-pneus">Rodízio de Pneus</option>
-<option value="alinhamento">Alinhamento</option>
-<option value="balanceamento">Balanceamento</option>
-<option value="calibragem">Calibragem dos Pneus</option>
-<option value="bateria">Verificação/Troca da Bateria</option>
-<option value="fluido-transmissao">Troca do Fluido da Transmissão</option>
-<option value="sistema-eletrico">Inspeção do Sistema Elétrico</option>
-<option value="palhetas">Troca das Palhetas do Para-brisa</option>
-<option value="escapamento">Inspeção do Sistema de Escapamento</option>
-<option value="mangueiras">Verificação das Mangueiras</option>
-<option value="revisao">Revisão Completa Periódica</option>   <option value="filtro">Filtro de Ar</option>
-      </select>
+        <optgroup label="Manutenção Preventiva">
+  <option value="oleo">Troca de Óleo</option>
+  <option value="filtro-oleo">Troca do Filtro de Óleo</option>
+  <option value="filtro-ar">Troca do Filtro de Ar do Motor</option>
+  <option value="filtro-cabine">Troca do Filtro de Cabine (Ar-condicionado)</option>
+  <option value="filtro-combustivel">Troca do Filtro de Combustível</option>
+  <option value="velas">Substituição das Velas de Ignição</option>
+  <option value="fluido-freio">Troca do Fluido de Freio</option>
+  <option value="fluido-arrefecimento">Troca do Fluido de Arrefecimento</option>
+  <option value="correia-dentada">Troca da Correia Dentada</option>
+  <option value="correia-acessorios">Troca da Correia de Acessórios</option>
+  <option value="rodizio-pneus">Rodízio de Pneus</option>
+  <option value="alinhamento">Alinhamento</option>
+  <option value="balanceamento">Balanceamento</option>
+</optgroup>
+
+<optgroup label="Manutenção Corretiva">
+  <option value="pastilhas-freio">Substituição das Pastilhas de Freio</option>
+  <option value="discos-freio">Substituição dos Discos de Freio</option>
+  <option value="amortecedores">Verificação/Troca dos Amortecedores</option>
+  <option value="fluido-transmissao">Troca do Fluido da Transmissão</option>
+  <option value="sistema-eletrico">Inspeção do Sistema Elétrico</option>
+  <option value="bateria">Verificação/Troca da Bateria</option>
+  <option value="escapamento">Inspeção do Sistema de Escapamento</option>
+  <option value="mangueiras">Verificação das Mangueiras</option>
+</optgroup>
+
+<optgroup label="Manutenção Geral">
+  <option value="calibragem">Calibragem dos Pneus</option>
+  <option value="palhetas">Troca das Palhetas do Para-brisa</option>
+  <option value="revisao">Revisão Completa Periódica</option>
+</optgroup>   </select>
 
       <label for="data">Data:</label>
       <input type="date" id="data" required>
