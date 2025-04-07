@@ -87,22 +87,7 @@ function excluirManutencao(id) {
 
 
 // Em manutencao.js
-function aplicarFiltros() {
-  const db = loadData();
-  const filtroPlaca = document.getElementById('filtro-placa').value.toLowerCase();
-  const filtroTipo = document.getElementById('filtro-tipo').value;
-  const filtroStatus = document.getElementById('filtro-status').value;
 
-  const filtradas = db.manutencoes.filter(m => {
-    return (!filtroPlaca || m.placa.toLowerCase().includes(filtroPlaca)) &&
-           (!filtroTipo || m.tipo === filtroTipo) &&
-           (!filtroStatus || 
-            (filtroStatus === 'pendente' && !m.realizada) ||
-            (filtroStatus === 'realizada' && m.realizada));
-  });
-
-  renderizarManutencoes(filtradas);
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   carregarVeiculos();
