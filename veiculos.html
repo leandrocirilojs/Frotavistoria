@@ -9,15 +9,74 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <style>
+    header {
+  position: relative;
+  background-color: #111;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background-color: #222;
+    padding: 10px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    z-index: 10;
+    border-radius: 8px;
+    width: 200px;
+  }
+
+  nav a {
+    display: block;
+    padding: 8px 12px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  nav.show {
+    display: flex;
+  }
+    }
+  </style>
   <header>
-    <h1>Cadastrar Veículo</h1>
-    <nav>
-  <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-  <a href="veiculos.html"><i class="fas fa-car"></i> Veículos</a>
-  <a href="manutencao.html"><i class="fas fa-tools"></i> Manutenção</a>
-  <a href="abastecimento.html"><i class="fas fa-gas-pump"></i> Combustível</a>
-</nav>
-  </header>
+  <h1>Minha Frota</h1>
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-car"></i>
+  </button>
+  <nav id="menu">
+    <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+    <a href="veiculos.html"><i class="fas fa-car"></i> Veículos</a>
+    <a href="manutencao.html"><i class="fas fa-tools"></i> Manutenção</a>
+    <a href="abastecimento.html"><i class="fas fa-gas-pump"></i> Combustível</a>
+  </nav>
+</header>
 
   <main>
     <form id="form-veiculo">
@@ -42,6 +101,15 @@
     </section>
   </main>
 
+
+<script>
+
+  function toggleMenu() {
+  const nav = document.getElementById('menu');
+  nav.classList.toggle('show');
+  }
+</script>
+  
   <script src="app.js"></script>
   <script src="veiculos.js"></script>
 </body>
