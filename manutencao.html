@@ -29,38 +29,102 @@
 
       <label for="tipo">Tipo de Manutenção:</label>
       <select id="tipo">
-        <optgroup label="Manutenção Preventiva">
-  <option value="oleo">Troca de Óleo</option>
+        <optgroup label="Motor e Lubrificação">
+  <option value="oleo">Troca de Óleo do Motor</option>
   <option value="filtro-oleo">Troca do Filtro de Óleo</option>
   <option value="filtro-ar">Troca do Filtro de Ar do Motor</option>
-  <option value="filtro-cabine">Troca do Filtro de Cabine (Ar-condicionado)</option>
   <option value="filtro-combustivel">Troca do Filtro de Combustível</option>
   <option value="velas">Substituição das Velas de Ignição</option>
-  <option value="fluido-freio">Troca do Fluido de Freio</option>
+  <option value="bobina">Verificação/Troca das Bobinas de Ignição</option>
+  <option value="injeção">Limpeza do Sistema de Injeção</option>
+  <option value="tbi">Limpeza do Corpo de Borboleta (TBI)</option>
+  <option value="pressao-combustivel">Verificação da Pressão de Combustível</option>
+</optgroup>
+
+<optgroup label="Sistema de Arrefecimento">
   <option value="fluido-arrefecimento">Troca do Fluido de Arrefecimento</option>
-  <option value="correia-dentada">Troca da Correia Dentada</option>
-  <option value="correia-acessorios">Troca da Correia de Acessórios</option>
+  <option value="radiador">Limpeza do Radiador</option>
+  <option value="valvula-termostatica">Verificação da Válvula Termostática</option>
+  <option value="ventoinha">Verificação do Funcionamento da Ventoinha</option>
+  <option value="reservatorio-expansao">Inspeção do Reservatório de Expansão</option>
+</optgroup>
+
+<optgroup label="Sistema de Freios">
+  <option value="pastilhas-freio">Substituição das Pastilhas de Freio</option>
+  <option value="discos-freio">Substituição dos Discos de Freio</option>
+  <option value="fluido-freio">Troca do Fluido de Freio</option>
+  <option value="tambores-freio">Verificação/Troca dos Tambores de Freio</option>
+  <option value="sapatas-freio">Troca das Sapatas de Freio</option>
+  <option value="cilindros">Verificação dos Cilindros de Roda</option>
+  <option value="servofreio">Verificação do Servo Freio (hidrovácuo)</option>
+</optgroup>
+
+<optgroup label="Transmissão e Embreagem">
+  <option value="fluido-transmissao">Troca do Fluido da Transmissão</option>
+  <option value="embreagem">Verificação/Substituição da Embreagem</option>
+  <option value="cambio">Verificação do Câmbio</option>
+  <option value="homocinetica">Verificação das Juntas Homocinéticas</option>
+  <option value="semieixo">Verificação do Semi-Eixo</option>
+</optgroup>
+
+<optgroup label="Suspensão e Direção">
+  <option value="amortecedores">Troca dos Amortecedores</option>
+  <option value="molas">Verificação/Troca das Molas</option>
+  <option value="buchas">Substituição das Buchas</option>
+  <option value="pivo">Verificação dos Pivôs</option>
+  <option value="bandeja">Inspeção das Bandejas</option>
+  <option value="terminal-direcao">Verificação dos Terminais de Direção</option>
+  <option value="caixa-direcao">Revisão da Caixa de Direção</option>
+  <option value="oleo-direcao">Troca do Fluido de Direção Hidráulica</option>
+</optgroup>
+
+<optgroup label="Rodas e Pneus">
   <option value="rodizio-pneus">Rodízio de Pneus</option>
   <option value="alinhamento">Alinhamento</option>
   <option value="balanceamento">Balanceamento</option>
-</optgroup>
-
-<optgroup label="Manutenção Corretiva">
-  <option value="pastilhas-freio">Substituição das Pastilhas de Freio</option>
-  <option value="discos-freio">Substituição dos Discos de Freio</option>
-  <option value="amortecedores">Verificação/Troca dos Amortecedores</option>
-  <option value="fluido-transmissao">Troca do Fluido da Transmissão</option>
-  <option value="sistema-eletrico">Inspeção do Sistema Elétrico</option>
-  <option value="bateria">Verificação/Troca da Bateria</option>
-  <option value="escapamento">Inspeção do Sistema de Escapamento</option>
-  <option value="mangueiras">Verificação das Mangueiras</option>
-</optgroup>
-
-<optgroup label="Manutenção Geral">
   <option value="calibragem">Calibragem dos Pneus</option>
+  <option value="estepe">Verificação do Estepe</option>
+</optgroup>
+
+<optgroup label="Sistema Elétrico e Bateria">
+  <option value="bateria">Verificação/Troca da Bateria</option>
+  <option value="alternador">Teste do Alternador</option>
+  <option value="motor-partida">Teste do Motor de Partida</option>
+  <option value="fusivel">Verificação dos Fusíveis</option>
+  <option value="lampadas">Troca de Lâmpadas</option>
+  <option value="rele">Verificação de Relés</option>
+</optgroup>
+
+<optgroup label="Sistema de Escape e Emissões">
+  <option value="escapamento">Inspeção do Escapamento</option>
+  <option value="catalisador">Verificação do Catalisador</option>
+  <option value="sonda-lambda">Teste da Sonda Lambda</option>
+  <option value="valvula-egr">Verificação da Válvula EGR</option>
+</optgroup>
+
+<optgroup label="Ar-condicionado e Ventilação">
+  <option value="filtro-cabine">Troca do Filtro de Cabine</option>
+  <option value="refrigerante-ar">Carga de Gás do Ar-condicionado</option>
+  <option value="compressor-ar">Verificação do Compressor</option>
+  <option value="ventilador-interno">Teste do Ventilador Interno</option>
+</optgroup>
+
+<optgroup label="Itens de Segurança e Conforto">
   <option value="palhetas">Troca das Palhetas do Para-brisa</option>
-  <option value="revisao">Revisão Completa Periódica</option>
-</optgroup>   </select>
+  <option value="travas">Verificação das Travas Elétricas</option>
+  <option value="vidros">Verificação dos Vidros Elétricos</option>
+  <option value="cinto">Verificação dos Cintos de Segurança</option>
+  <option value="alarme">Verificação do Alarme</option>
+</optgroup>
+
+<optgroup label="Outros Itens e Revisões Gerais">
+  <option value="mangueiras">Verificação das Mangueiras</option>
+  <option value="reservatorios">Verificação dos Reservatórios</option>
+  <option value="limpeza-geral">Limpeza do Motor</option>
+  <option value="revisao">Revisão Periódica Completa</option>
+  <option value="checkup-eletronico">Check-up Eletrônico</option>
+</optgroup>
+      </select>
 
       <label for="data">Data:</label>
       <input type="date" id="data" required>
