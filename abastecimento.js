@@ -1,19 +1,9 @@
-
-// Carrega veículos no dropdown principal
+// Carrega veículos no dropdown
 function carregarVeiculosAbastecimento() {
   const db = loadData();
   const select = document.getElementById('placa-abastecimento');
   select.innerHTML = db.veiculos.map(v => 
     `<option value="${v.placa}">${v.placa} - ${v.modelo}</option>`
-  ).join('');
-}
-
-// Carrega placas no filtro
-function carregarFiltroPlacas() {
-  const db = loadData();
-  const select = document.getElementById('filtro-placa');
-  select.innerHTML = '<option value="">Todas</option>' + db.veiculos.map(v => 
-    `<option value="${v.placa}">${v.placa}</option>`
   ).join('');
 }
 
@@ -27,9 +17,11 @@ function registrarAbastecimento() {
   const kmAtual = parseInt(document.getElementById('km-atual').value);
   const tipo = document.getElementById('tipo-combustivel').value;
 
+  // Atualiza KM do veículo
   const veiculo = db.veiculos.find(v => v.placa === placa);
   if (veiculo) veiculo.kmAtual = kmAtual;
 
+  // Registra abastecimento
   db.abastecimentos.push({
     placa,
     data,
@@ -45,11 +37,12 @@ function registrarAbastecimento() {
   listarAbastecimentos();
 }
 
-// Lista todos os abastecimentos
+// Lista histórico de abastecimentos
+// Lista histórico de abastecimentos com botão de excluir
 function listarAbastecimentos() {
   const db = loadData();
   const lista = document.getElementById('lista-abastecimentos');
-
+  
   lista.innerHTML = db.abastecimentos.map((a, index) => `
     <li>
       <strong>${a.placa}</strong> - ${a.data}<br>
@@ -60,47 +53,17 @@ function listarAbastecimentos() {
   `).join('');
 }
 
-// Filtrar abastecimentos por placa e datas
-function filtrarAbastecimentos() {
-  const db = loadData();
-  const placaFiltro = document.getElementById('filtro-placa').value;
-  const dataInicio = document.getElementById('data-inicio').value;
-  const dataFim = document.getElementById('data-fim').value;
-  const lista = document.getElementById('lista-abastecimentos');
-
-  const filtrados = db.abastecimentos.filter(a => {
-    const data = new Date(a.data);
-    const inicio = dataInicio ? new Date(dataInicio) : null;
-    const fim = dataFim ? new Date(dataFim) : null;
-
-    return (!placaFiltro || a.placa === placaFiltro) &&
-           (!inicio || data >= inicio) &&
-           (!fim || data <= fim);
-  });
-
-  lista.innerHTML = filtrados.map((a, index) => `
-    <li>
-      <strong>${a.placa}</strong> - ${a.data}<br>
-      ${a.litros}L de ${a.tipo} (R$ ${a.valor.toFixed(2)})<br>
-      KM: ${a.kmAtual} | Preço/L: R$ ${a.precoPorLitro}
-      <button onclick="excluirAbastecimento(${index})" class="btn-excluir">Excluir</button>
-    </li>
-  `).join('');
-}
-
-// Excluir abastecimento
+// Função para excluir abastecimento
 function excluirAbastecimento(index) {
   if (confirm('Tem certeza que deseja excluir este abastecimento?')) {
     const db = loadData();
-    db.abastecimentos.splice(index, 1);
+    db.abastecimentos.splice(index, 1); // Remove o item no índice especificado
     saveData(db);
-    listarAbastecimentos();
+    listarAbastecimentos(); // Atualiza a lista
   }
 }
-
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   carregarVeiculosAbastecimento();
-  carregarFiltroPlacas();
   listarAbastecimentos();
 });
