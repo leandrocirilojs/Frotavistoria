@@ -158,3 +158,64 @@ form button:hover {
   justify-content: center;
   height: 100vh;
 }
+
+
+
+
+/*Menu pneu*/
+
+<style>
+    header {
+  position: relative;
+  background-color: #111;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background-color: #222;
+    padding: 10px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    z-index: 10;
+    border-radius: 8px;
+    width: 200px;
+  }
+
+  nav a {
+    display: block;
+    padding: 8px 12px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  nav.show {
+    display: flex;
+  }
+}
