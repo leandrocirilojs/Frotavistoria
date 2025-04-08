@@ -92,3 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Atualiza o dashboard a cada 30 segundos
   setInterval(updateDashboard, 30000);
 });
+
+
+//Menu Amburguer Car
+function toggleMenu() {
+  const nav = document.getElementById('menu');
+  nav.classList.toggle('show');
+}
